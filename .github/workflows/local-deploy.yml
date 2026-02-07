@@ -16,7 +16,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Pull Docker image
-        run: docker pull ghcr.io/sergioarceds/${{ github.repository }}:latest
+        run: docker pull ghcr.io/sergioarceds/gaei-customer-api:latest
 
       - name: Stop container
         run: |
