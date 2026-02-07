@@ -1,0 +1,8 @@
+services:
+  api:
+    image: gaei-customer-image:latest
+    container_name: gaei-customer-container
+    ports:
+      - "9090:9090"
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
