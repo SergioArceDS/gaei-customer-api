@@ -3,11 +3,13 @@ FROM maven:3.9.6-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
-#Copiamos pom.xml para aprovechar cache
-COPY pom.xml .
 COPY .mvn .mvn
 COPY mvnw .
 
+RUN chmod +x mvnw
+
+#Copiamos pom.xml para aprovechar cache
+COPY pom.xml .
 RUN ./mvnw dependency:go-offline
 
 #Copiamos codigo fuente
