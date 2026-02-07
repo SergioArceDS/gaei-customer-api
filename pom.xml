@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.gaei</groupId>
 	<artifactId>gaei-customer</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>gaei-customer</name>
 	<description>Prueba técnica</description>
 	<url/>
