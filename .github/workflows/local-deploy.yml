@@ -1,0 +1,32 @@
+name: Local Deploy with Docker
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Login a GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull Docker image
+        run: docker pull ghcr.io/sergioarceds/${{ github.repository }}:latest
+
+      - name: Stop container
+        run: |
+          docker stop gaei-customer-container || true
+          docker rm gaei-customer-container || true
+
+      - name: Run container
+        run: |
+          docker run -d \
+            -p 9090:9090 \
+            --name gaei-customer-container \
+            -e SPRING_PROFILES_ACTIVE=dev SPRING_DATASOURCE_URL=jdbc:h2:mem:gaei_dev SPRING_DATASOURCE_USERNAME=sa
+            ghcr.io/${{ github.repository }}:latest
