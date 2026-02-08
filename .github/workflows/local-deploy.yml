@@ -28,5 +28,7 @@ jobs:
           docker run -d \
             -p 9090:9090 \
             --name gaei-customer-container \
-            -e SPRING_PROFILES_ACTIVE=dev SPRING_DATASOURCE_URL=jdbc:h2:mem:gaei_dev SPRING_DATASOURCE_USERNAME=sa \
+            -e SPRING_PROFILES_ACTIVE=dev \
+            -e SPRING_DATASOURCE_URL=jdbc:h2:mem:gaei_dev \
+            -e SPRING_DATASOURCE_USERNAME=sa \
             ghcr.io/sergioarceds/gaei-customer-api:latest
